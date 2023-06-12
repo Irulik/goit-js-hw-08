@@ -503,14 +503,27 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"6XVkV":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+// Описаний в документації
+var _simplelightbox = require("../../node_modules/simplelightbox");
+var _simplelightboxDefault = parcelHelpers.interopDefault(_simplelightbox);
+// Додатковий імпорт стилів
+var _simpleLightboxMinCss = require("simplelightbox/dist/simple-lightbox.min.css");
 // Add imports above this line
 var _galleryItems = require("./gallery-items");
 // Change code below this line
-console.log((0, _galleryItems.galleryItems));
-
+const list = document.querySelector(".gallery");
+const markup = (0, _galleryItems.galleryItems).map((galleryItem)=>`<a class="gallery__item" href="${galleryItem.original}">
+    <img class="gallery__image" src="${galleryItem.preview}" alt="${galleryItem.description}" />
+  </a>`).join("");
+list.insertAdjacentHTML("beforeend", markup);
+const lightbox = new (0, _simplelightboxDefault.default)(".gallery a", {
+    captionsData: "alt",
+    captionPosition: "bottom",
+    captionDelay: 250
+});
 
 },{"./gallery-items":"9C7dK","../../node_modules/simplelightbox":"9ydBq","simplelightbox/dist/simple-lightbox.min.css":"kaxSc","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9C7dK":[function(require,module,exports) {
-
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "galleryItems", ()=>galleryItems);
@@ -591,7 +604,6 @@ exports.export = function(dest, destName, get) {
         get: get
     });
 };
-
 
 },{}],"9ydBq":[function(require,module,exports) {
 /*!
@@ -2103,6 +2115,5 @@ exports["default"] = _default;
 global.SimpleLightbox = SimpleLightbox;
 
 },{}],"kaxSc":[function() {},{}]},["8EXaa","6XVkV"], "6XVkV", "parcelRequired7c6")
-
 
 //# sourceMappingURL=01-gallery.53390864.js.map
