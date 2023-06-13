@@ -1,4 +1,3 @@
-
 import Player from "@vimeo/player";
 import throttle from "lodash.throttle";
 const player = new Player("vimeo-player");
@@ -13,4 +12,3 @@ const savedTime = localStorage.getItem(storageKey);
 if (savedTime) {
     player.setCurrentTime(savedTime || 0);
 }
-
